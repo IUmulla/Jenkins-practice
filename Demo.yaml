@@ -1,0 +1,64 @@
+apiVrsion: v1
+kind:  Pods
+metadata: 
+  name : app-pod
+  Lebels :
+    app: app-pod
+spec :
+  Containers:
+    - name: app-pod
+      image: nginx
+      ports:
+        - containerport: 80
+
+
+---
+Rs
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-rs
+  lebels:
+    app: demo-rs
+spec:
+  replicas: 2
+  template :
+    metadata: 
+      name : app-pod
+      Lebels :
+        app: app-apps
+    spec :
+      Containers:
+        - name: nginx
+          image: nginx
+           
+
+---
+
+Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchlebels: 
+      apps: demo-apps
+  template :
+    metadata: 
+      name : app-pod
+      Lebels :
+        app: app-apps
+    spec :
+      Containers:
+        - name: nginx
+          image: nginx
+
+
+
+
+
+
